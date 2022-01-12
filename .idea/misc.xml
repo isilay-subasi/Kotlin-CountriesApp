@@ -5,7 +5,8 @@
       <map>
         <entry key="..\:/Users/isil/Desktop/Kotlin-CountriesApp/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/isil/Desktop/Kotlin-CountriesApp/app/src/main/res/layout/fragment_country.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/isil/Desktop/Kotlin-CountriesApp/app/src/main/res/layout/fragment_feed.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/isil/Desktop/Kotlin-CountriesApp/app/src/main/res/layout/fragment_feed.xml" value="0.1" />
+        <entry key="..\:/Users/isil/Desktop/Kotlin-CountriesApp/app/src/main/res/layout/item_counrty.xml" value="0.2" />
       </map>
     </option>
   </component>
