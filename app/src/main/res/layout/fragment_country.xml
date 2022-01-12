@@ -2,12 +2,85 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-<FrameLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.CountryFragment">
 
+    <ImageView
+        android:id="@+id/countryImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:minHeight="200dp"
+        android:paddingTop="10dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:scaleType="fitCenter">
 
+    </ImageView>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/countryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/countryImage"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="7dp"
+        android:text="Country Name"
+        android:textSize="20sp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/countryCapital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/countryName"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="7dp"
+        android:text="Country Capital"
+        android:textSize="16sp"
+         >
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/countryRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/countryCapital"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="7dp"
+        android:text="Country Region"
+        android:textSize="16sp"
+        >
+
+    </TextView>
+    <TextView
+        android:id="@+id/countrCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/countryRegion"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="7dp"
+        android:text="Country Currency"
+        android:textSize="16sp"
+        >
+
+    </TextView>
+    <TextView
+        android:id="@+id/countrLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/countrCurrency"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="7dp"
+        android:text="Country Language"
+        android:textSize="16sp"
+        >
+
+    </TextView>
+
+</RelativeLayout>
 </layout>
