@@ -72,3 +72,51 @@ data class Country(
 
 )
 ```
+## Adapter
++ Adapter paketi oluşturup içerisine CountryAdapter adında sınıf oluşturuyoruz.
+Bu sınıf parametre olarak bir ArrayList alacak ve Country modeli şeklinde.
+Ve bize bir adapter döndürecektir.
+```
+RecyclerView.Adapter<CountryAdapter.CountryViewHolder>()
+```
++ Yukarıdaki değer de bizden bir ViewHolder sınıfı istiyor. O sınıfı oluşturuyoruz.
+```
+
+    class CountryViewHolder(var view : View) : RecyclerView.ViewHolder(view) {
+
+    }
+ ```
+ + Parametre olarak view elemanı veriyoruz. Ve bize ViewHolder döndürecektir.
+
+ + implement etmem gereken metotları implement ediyorum.
+
+## ViewModel ve LiveData
+
++ Her view'ın ayrı bir viewmodeli olması gerekiyor. Clean code yazmak amaçlı bir mimari yapı olduğu için fragmentler için ayrı ayrı viewmodel oluşturacağız.
+
++ MVVM kullanmanın diğer bir artısı veya özelliği lifecycle. Normal bir fragmentte veya aktivitede oncreate gibi başlarken oluşan metotlar , durdurulurken cihazı yana çevirdiğimiz çalışacak metotlar vardır. 
+Ama ViewModel'ın bir tane lifecycle vardır. İster yan çevir ister başka şeyler yap sadece tek bir scopeda gösteriliyor. onCleared() bitince belli eden bir metotdur.
+
++ LiveData (Canlı Veri) -> Observable olması. Yani gözlemlenebilir olması. <br>
+Observer - Gözlemci demek. Bizde gözlemlenebilir veriler oluşturacağız. Bu veriye observerların yani gözlemcilerin bu veriye her zaman erişimi sağlanıyor. 
+
++ ViewModelimiz oluşturduk ve içerisindeki datalarımızı livedata olarak kullanacağız.
+
+```
+class FeedViewModel : ViewModel(){
+
+    val countries = MutableLiveData<List<Country>>()
+    val countryError = MutableLiveData<Boolean>()
+    val countryLoading = MutableLiveData<Boolean>()
+    
+}
+```
+## ViewModel Oluşturmak
+
++ refreshData() metodu oluşturuyoruz. Bunu kullanarak ilerde datalarımızı çekeceğiz ve refresh edeceğiz. Oluşturduktan sonra View tarafını yazmaya geçeceğiz.FeedFragment içerinde viewmodelimizi oluşturacağız.
+
+
+
+
+
+
