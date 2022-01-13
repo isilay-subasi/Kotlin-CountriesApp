@@ -116,6 +116,28 @@ class FeedViewModel : ViewModel(){
 + refreshData() metodu oluşturuyoruz. Bunu kullanarak ilerde datalarımızı çekeceğiz ve refresh edeceğiz. Oluşturduktan sonra View tarafını yazmaya geçeceğiz.FeedFragment içerinde viewmodelimizi oluşturacağız.
 
 
+## Retrofit ve RxJava Nedir ? 
+
++ Retrofit -> İnternetten veri indirirken , özellikle apiyle çalışırken GET,POST,UPDATE gibi işlemleri yapmamızı sağlayan bir kütüphanedir.Arka planda indirmesi, asenkron çalışması, kullanıcının uı bloklamaması önemli özelliktir.
+
++ RxJava -> Yine çok güçlü bir yardımcı kütüphanedir.Rxjavayı kullanarak gözlemlenebilir yapabiliriz.Başka threadlerde yapam gibi başka araçlara sahip olabiliriz. 
+
++ Basit işlemler için Retrofiti tercih ederken daha kapsamlı uygulamalarda RxJavayı tercih etmeliyiz. 
+
+### Interface Yazmak 
+
+>Öncelikle interface oluşturuyoruz. Ve burda hangi işlemleri yapacağımızı söylüyoruz.GET,POST  (CountryAPI)
+
+>Uygulamamızda verileri indireceğiz. Ve indirdikten sonra yerel veritabanımıza kaydedeceğiz. Şöyle bir algoritma izleyeceğiz. Eğer 10dk geçtiyse tekrar apiden indir. Geçmediyse halihazırda sqlitedan kullanabilirsin. 
+
+> Call işlemleri için rxjavda single özelliğini kullanıyoruz. Observabla diye gözlemlenebilir call de vardır. Değişk call çağrılıarı vardır. 
+
+### Servis Yazmak 
+
+
+
+
+
 
 
 
