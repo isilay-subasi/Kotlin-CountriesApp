@@ -25,7 +25,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/countryImage"
         android:layout_centerHorizontal="true"
-        android:layout_margin="7dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="7dp"
         android:text="Country Name"
         android:textSize="20sp"
         android:textStyle="bold">
@@ -58,7 +61,7 @@
 
     </TextView>
     <TextView
-        android:id="@+id/countrCurrency"
+        android:id="@+id/countryCurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/countryRegion"
@@ -70,10 +73,10 @@
 
     </TextView>
     <TextView
-        android:id="@+id/countrLanguage"
+        android:id="@+id/countryLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/countrCurrency"
+        android:layout_below="@id/countryCurrency"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp"
         android:text="Country Language"
