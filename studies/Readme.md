@@ -228,3 +228,16 @@ fun ImageView.downloadFromUrl(url : String? , progressDrawable: CircularProgress
     
 }
 ```
+
+## Kotlin : ROOM
+
+> Jetpackin en popüler kütüphenlerinden biridir. Yerel veritabanlarıyla çalışmayı bizim için kolay bir hale getiren frameworktür.
+
+>İnternetten indirdiğimiz verileri yerel veritabanımızda saklayacağız. Belli bir süre geçmediyse veritabanında belli bir süre geçtikten sonra yine apıdan çekilmesini sağlayacağız. 
+
+> İnternetten indirdiğimiz verileri SQLite a kaydedeceğiz. Klasik SQLite komutları kullanmak yerine Jetpackin Room kütüphanesini kullanacağız. 
+
+### Modeli Değiştirelim
+
+> SQLitenın içerisinden Room Databasi kullanabilmek için <b>entity</b> dediğimiz bir yapıyı oluşturacağız. SQLite içerisinde bir sınıflandırma yapacaktır. Modelimizin başına yazacağız. Her entity de bir primaryKey kullanmamız gerekir. 
+
