@@ -204,3 +204,27 @@ println(myParameter)
 
 
 + Her imageview objesine glide için bir fonksiyon tanımlamak. Ve glideım içinde yapılan tüm ayarlamaları o fonksiyon içerisinde yapmak , bundan sonra herhangi bir imageviewdan bu fonksiyonu çağırabilmek. Böylece ben uygulamamda ister row içerisinden ister adapter içerisinden ister başka fragmentten glide tekrar tekrar tanımlamadan bir seferde ulaşılabilir hale geleceğim.  
+
+
+### Görselleri getirmek
+
++ ImageView bir extension fonksiyonu yazıyorum. 
++ Glide özelliklerini tanımlıyorum.
+
++ Placaholder -> Görseller gelene kadar nasıl bir resim gözüksün demektir.
+
+```
+fun ImageView.downloadFromUrl(url : String? , progressDrawable: CircularProgressDrawable){
+
+    val options = RequestOptions()
+        .placeholder(progressDrawable)
+        .error(R.mipmap.ic_launcher_round)
+
+
+    Glide.with(context)
+        .setDefaultRequestOptions(options)
+         .load(url)
+         .into(this)
+    
+}
+```
