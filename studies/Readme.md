@@ -166,3 +166,15 @@ class FeedViewModel : ViewModel(){
 > CompositDisposable() -> Biz bu tarz Call'lar yaparken , internetten veri indirirken Retrofitle ya da RxJava ile her yaptığımız Call hafızada bir yer tutuyor. Fragmentler clear edildiğinde ya da başka bir fragmente geçildiğinde kapatıldıgında bu Callardan kurtulmamız gerekiyor. Kurtulmazsak eğer hafızada yer ediyor ve sıkıntılara sebep olabiliyor. CompositDisposibla() tam olarak bu işe yarıyor. Bir tane büyük bir obje oluşturuyor. Call yaptıkça internetten veri indirdikçe bunun içerisine atıyoruz. disposable (Kullan at demek ). Bu kullan at objemize bunları dolduruyoz. En sonunda temizleyerek hafızamızı verimli kullanabiliyoruz. Bu çok faydali bir şeydir. Birden fazla Call işlemi yaparsak hepsini bunun içerisine koyuyoruz. 
 
 
+### Refresh Layout
+
+```
+        //Kullanıcı refresh ettiğinde ne olacak ?
+        swipeRefreshLayout.setOnRefreshListener {
+            countryList.visibility=View.GONE
+            countryError.visibility=View.GONE
+            countryLoading.visibility=View.VISIBLE
+            viewModel.refreshData()
+            swipeRefreshLayout.isRefreshing=false
+        }
+```
