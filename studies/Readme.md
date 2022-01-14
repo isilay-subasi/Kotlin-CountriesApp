@@ -178,3 +178,29 @@ class FeedViewModel : ViewModel(){
             swipeRefreshLayout.isRefreshing=false
         }
 ```
+
+## Kotlin : Extensions
+
+
+### KTX Nedir ? 
++ Resimleri göstermek için <b>"Glide"</b> kütüphanesinden yararlanacağız.
+
+
+> KTX : Kotlin extensions(Eklentiler). Kotlin bize eklenti yapmaya izin veren bir dildir. Herhangi bir sınıfa istediğim eklentiyi yapabiliyorum. 
+```
+//Extension
+//Hangi sınıfa extend edeceksem onu yazıyorum.
+//Mesela String sınıfına bir eklenti oluşturmak istiyorum. Aşağıdaki gibi yapabilirim ;
+//gelen veriyi yazdıracak bir extension yazmış olduk.
+fun String.myExtensions(myParameter : String){
+println(myParameter)
+
+}
+```
+```
+        val myString = "Isil"
+        myString.myExtensions(myString)
+```
+
+
++ Her imageview objesine glide için bir fonksiyon tanımlamak. Ve glideım içinde yapılan tüm ayarlamaları o fonksiyon içerisinde yapmak , bundan sonra herhangi bir imageviewdan bu fonksiyonu çağırabilmek. Böylece ben uygulamamda ister row içerisinden ister adapter içerisinden ister başka fragmentten glide tekrar tekrar tanımlamadan bir seferde ulaşılabilir hale geleceğim.  
