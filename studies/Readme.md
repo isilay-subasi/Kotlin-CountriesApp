@@ -134,7 +134,7 @@ class FeedViewModel : ViewModel(){
 
 ### Servis Yazmak 
 
-> Servisimiziyazmamız retrofit objemizi oluşturmamız gerekiyor. 
+> Servisimizi yazmamız retrofit objemizi oluşturmamız gerekiyor. 
 
 
 ```
@@ -152,9 +152,17 @@ class FeedViewModel : ViewModel(){
 ```
 
 
+### Verileri Almak
 
++ Verileri almak için viewmodelimiz içerisinde servisimizin objesini oluşturmalıyız.
 
+```
+    //servis objemizi oluşturmamız gerekiyor.
+    private val countryApiService =CountryAPIService()
+    //disponsablemızı oluşturacağız.
+    private val disposable = CompositeDisposable()
+```
 
-
+> CompositDisposable() -> Biz bu tarz Call'lar yaparken , internetten veri indirirken Retrofitle ya da RxJava ile her yaptığımız Call hafızada bir yer tutuyor. Fragmentler clear edildiğinde ya da başka bir fragmente geçildiğinde kapatıldıgında bu Callardan kurtulmamız gerekiyor. Kurtulmazsak eğer hafızada yer ediyor ve sıkıntılara sebep olabiliyor. CompositDisposibla() tam olarak bu işe yarıyor. Bir tane büyük bir obje oluşturuyor. Call yaptıkça internetten veri indirdikçe bunun içerisine atıyoruz. disposable (Kullan at demek ). Bu kullan at objemize bunları dolduruyoz. En sonunda temizleyerek hafızamızı verimli kullanabiliyoruz. Bu çok faydali bir şeydir. Birden fazla Call işlemi yaparsak hepsini bunun içerisine koyuyoruz. 
 
 
