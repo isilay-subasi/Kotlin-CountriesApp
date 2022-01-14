@@ -241,3 +241,23 @@ fun ImageView.downloadFromUrl(url : String? , progressDrawable: CircularProgress
 
 > SQLitenın içerisinden Room Databasi kullanabilmek için <b>entity</b> dediğimiz bir yapıyı oluşturacağız. SQLite içerisinde bir sınıflandırma yapacaktır. Modelimizin başına yazacağız. Her entity de bir primaryKey kullanmamız gerekir. 
 
+> Room kullanabilmek için bir arayüz ve servis yazmamız gerekmektedir.
+
+
+> Room frameworkün dökümanını inceleyebiliriz.
+
++ Room veritatabınıda 3 tane önemli özelliğimiz var.
+
++ Database -> Veritabanımızın kendisi.
+
++ Entity 
+
++ DAO -> Verilere ulaşma objesidir. 
+
+Bu işlemleri yaparken arka planda yapacağız . Ve bunun içinde COROUTINE kullanacağız. 
+
+> Coroutines -> Farklı threadlerde işlem yapmamızı kolaylaştırır. 
+DAO oluşturduğumuzda bunun içindeki metotları coroutineler çağrırak yaptıgımız takdirde ana threadde değilde başka bir threadde yapıldıgını garanti altına alıyoruz. 
+
+> Fonkisyonlar <b>suspend</b> keywordünğ alır. Coroutineler içerisinde çalıştırılabilen ve gerektiğinde durdurulup sonradan devam ettirilebilir fonksiyonlardır. 
+
