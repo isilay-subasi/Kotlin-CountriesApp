@@ -258,6 +258,9 @@ Bu işlemleri yaparken arka planda yapacağız . Ve bunun içinde COROUTINE kull
 
 > Coroutines -> Farklı threadlerde işlem yapmamızı kolaylaştırır. 
 DAO oluşturduğumuzda bunun içindeki metotları coroutineler çağrırak yaptıgımız takdirde ana threadde değilde başka bir threadde yapıldıgını garanti altına alıyoruz. 
+Asenkron işlemler için kullanılıyor.Tanım olarak lightweight thread olarak söyleniyor main thread’i blocklamadan bir çok işlem yapabiliyoruz.Şöyle bir örnek var çok sayıda(1000) thread işlemi başlatırsanız uygulamanız crash olur ama aynı sayıda coroutine işlemi başlatırsanız herhangi bir sorun olmayacaktır.
 
 > Fonkisyonlar <b>suspend</b> keywordünğ alır. Coroutineler içerisinde çalıştırılabilen ve gerektiğinde durdurulup sonradan devam ettirilebilir fonksiyonlardır. 
+
+
 
