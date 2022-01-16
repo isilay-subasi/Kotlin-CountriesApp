@@ -9,6 +9,7 @@
 <hr>
 
 SwipeRefreshLayout kullanacağız.
+>SwipeRefreshLayout : Dikey kaydırmayı algılayarak çalışan, kullanıcıya sürekli dönen bir Progress Bar gösteren yardımcı bir kütüphanedir. Örneğin yüksek skorlar sayfanız olduğunu varsayalım, kullanıcı son skorları görmek için sürekli bu sayfaya gir çık yapmayı tercih etmeyecektir. Bunun yerine daha kolay bir yol sunmak gerekir. Kolay yolu da bu kütüphanedir diyebiliriz.
 Aşağı doğru çekince güncelleme yapabilmek için bu layoutu kullanıyoruz.
 feed_fragment.xml kısmına RecyclerView,Progress Bar ve SwipeRefreshLayoutumuzu ekledik.
 
