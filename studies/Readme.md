@@ -295,3 +295,37 @@ Buda statik şekilde bir değişken oluşturup bu sınıfın scopu dışında da
 + Oluşturduğumuz instance var mı yok mu kontrol etmem lazım . Ona göre işlem yapacağım. Var ise o instance yok ise oluşturmam gerekiyor. 
 
 + Bu sınıfımızdan sadece tek bir obje oluşturulur. O objenin adı instance'dır.  
+
+
+### Coroutine
+
+> Coroutine kullanmak için bazı ayarlar yapmamız lazım . Bazi parametreleri vermemiz lazım. Arka planda mı çalıştıracağız main threadde mi çalıştıracağız bunun söylememiz gerekiyor. 
+
++ Öncelikle bir iş oluşturmam gerekiyor ve bu işin ne yapacağını söylemem gerekiyor. 
++ Farklı bir sınıfta kullanacağız. -> ViewModel modülünün içerisine BaseViewModel sınıfı oluşturuyorum.
++ AndroidViewModel() extend ediyorum. Ve benden application parametresi istiyor. Daha da güvenli bir sınıf oluşturmak için bunu kullanıyorum.
++ CoroutineScope extend etmem gerekiyor. Ve memberlere implement ediyorum.
++ get metoduna coroutine ne yapacağını söylemem gerekiyor.
+
+```
+ override val coroutineContext: CoroutineContext
+        get() = 
+```
+
++ Bir job oluşturacağım. Job iş demek. Arka planda yapılacak iş demek. 
+
++ get() =job + Dispatchers.Main -> Arka planda işlemi yap ve main threade geri dön anlamındadır. 
+
++ onClerade() fonksiyonun çağırıyorum. Eğer app kapatılırsa yani bir şekilde destroy olursa burdaki işi bitireceğim. 
++ Bundan sonra FeedViewModela extend ediyorum. Ve artık coroutineleri kullanabilirim. 
+
++ storeInSQLite() metoduna gelerek launch yazıyorum . Ve bu bana yeni bir coroutine oluşturacağını söyler. Bir joba ihtiyaç duyduğunu söyler.
+
++ Artık bu launchın içinde database işlemlerimi yapacağım. 
+
++ toTypedArray() listedeki verileri tekil hale getirecektir. Kotlinin bir özelliği. Listeyi tekil elemanlar haline getirmeye yarar. 
+
+>dao.insertAll(*list.toTypedArray()) // list -> individual
+
+
+
