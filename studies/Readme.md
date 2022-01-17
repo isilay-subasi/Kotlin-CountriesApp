@@ -362,3 +362,7 @@ Buda statik şekilde bir değişken oluşturup bu sınıfın scopu dışında da
 
 + name ve type veriyoruz. Modelin ismini ve tipini veriyoruz. Verileri direk bağlıyabiliyoruz. 
 + android:text="@{country.countryName}"  datanın ismini yazınca, modelin içindeki verilere erişebiliyoruz.
+
+> xml içinde yaptığımız değişikliği adaptör içinde de değişiklikler yapılarak erişebiliriz. 
+
++ data binding yaptığımızı söylememiz gerekiyor. 
