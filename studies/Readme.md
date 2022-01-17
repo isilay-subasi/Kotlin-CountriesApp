@@ -328,4 +328,10 @@ Buda statik şekilde bir değişken oluşturup bu sınıfın scopu dışında da
 >dao.insertAll(*list.toTypedArray()) // list -> individual
 
 
+### İleri Seviye SharedPreferences
 
++ 10 dakika geçtiyse verileri apiden al geçmediyse veritabanımdan al demek istiyordum. 
++ Veritabanına ne zaman kaydedildiğini kontrol etmeliyim. 
++ Ve süreyi kontrol etmeliyim.
++ Ve bu veriyi sharedprefrences de tutacağım.
+ Singleton yapısıyla CustomSharedPreferences oluşturuyoruz. Ve İçerisine time değişkenini ekliyoruz. Süreyi burda tutacağız. 

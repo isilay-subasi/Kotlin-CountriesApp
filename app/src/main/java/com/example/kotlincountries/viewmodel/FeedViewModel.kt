@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.kotlincountries.model.Country
 import com.example.kotlincountries.service.CountryAPIService
 import com.example.kotlincountries.service.CountryDatabase
+import com.example.kotlincountries.util.CustomSharedPreferences
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -20,6 +21,7 @@ class FeedViewModel(application: Application) : BaseViewModel(application){
     private val countryApiService =CountryAPIService()
     //disponsablemızı oluşturacağız.
     private val disposable = CompositeDisposable()
+    private var customPreferences = CustomSharedPreferences(getApplication())
 
     val countries = MutableLiveData<List<Country>>()
     val countryError = MutableLiveData<Boolean>()
@@ -105,6 +107,8 @@ class FeedViewModel(application: Application) : BaseViewModel(application){
 
 
         }
+
+        customPreferences.saveTime(System.nanoTime()) // bize bir long değeri verecektir. Hangi zamanda kaydedildiğini tutacaktır.
 
 
     }
