@@ -148,6 +148,11 @@ class FeedViewModel(application: Application) : BaseViewModel(application){
     }
 
 
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
+    }
+
 
 
 }
