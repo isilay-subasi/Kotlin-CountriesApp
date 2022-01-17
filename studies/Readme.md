@@ -335,3 +335,9 @@ Buda statik şekilde bir değişken oluşturup bu sınıfın scopu dışında da
 + Ve süreyi kontrol etmeliyim.
 + Ve bu veriyi sharedprefrences de tutacağım.
  Singleton yapısıyla CustomSharedPreferences oluşturuyoruz. Ve İçerisine time değişkenini ekliyoruz. Süreyi burda tutacağız. 
+
+ ### API ve SQLite
+
+ + Sqlitedan mı çekicez apiden mi çekicez onunla ilgili bir fonksiyon oluşturacağız.
+
+ 

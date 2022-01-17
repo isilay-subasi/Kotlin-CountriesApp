@@ -1,6 +1,8 @@
 package com.example.kotlincountries.viewmodel
 
 import android.app.Application
+import android.content.SharedPreferences
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.kotlincountries.model.Country
@@ -23,12 +25,26 @@ class FeedViewModel(application: Application) : BaseViewModel(application){
     private val disposable = CompositeDisposable()
     private var customPreferences = CustomSharedPreferences(getApplication())
 
+    private var resfreshTime = 10*60*1000*1000*1000L // 10 dknın nanosaniye cinsinden değeri
+
     val countries = MutableLiveData<List<Country>>()
     val countryError = MutableLiveData<Boolean>()
     val countryLoading = MutableLiveData<Boolean>()
 
     fun refreshData(){
-        getDataFromAPI()
+
+
+
+
+        val updateTime = customPreferences.getTime()
+
+        //10 dakikadan az bir süre geçmişse
+        if(updateTime != null && updateTime != 0L && System.nanoTime() - updateTime < resfreshTime){
+                getDataFromSQLite()
+
+        }else getDataFromAPI()
+
+
 
         /*
                 val country = Country("Turkey","Asia","Ankara","TRY","Turkish","www.ss.com")
@@ -51,6 +67,23 @@ class FeedViewModel(application: Application) : BaseViewModel(application){
     }
 
 
+    fun refreshFromAPI(){
+        getDataFromAPI()
+    }
+
+
+    private fun getDataFromSQLite(){
+
+        countryLoading.value=true
+        launch {
+            val countries = CountryDatabase(getApplication()).countryDao().getAllCountries()
+            showCountries(countries)
+            Toast.makeText(getApplication(),"Countries From SQLite",Toast.LENGTH_LONG).show()
+        }
+    }
+
+
+
     private fun getDataFromAPI(){
 
         countryLoading.value=true
@@ -63,7 +96,7 @@ class FeedViewModel(application: Application) : BaseViewModel(application){
                     override fun onSuccess(t: List<Country>) {
 
                         storeInSQLite(t) // Burda yapacağımız işlemi arka planda yapacağız.
-
+                        Toast.makeText(getApplication(),"Countries From API",Toast.LENGTH_LONG).show()
 
                     }
 
@@ -109,6 +142,7 @@ class FeedViewModel(application: Application) : BaseViewModel(application){
         }
 
         customPreferences.saveTime(System.nanoTime()) // bize bir long değeri verecektir. Hangi zamanda kaydedildiğini tutacaktır.
+
 
 
     }
