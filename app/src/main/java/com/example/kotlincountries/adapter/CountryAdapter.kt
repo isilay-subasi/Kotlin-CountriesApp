@@ -3,9 +3,11 @@ package com.example.kotlincountries.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlincountries.R
+import com.example.kotlincountries.databinding.ItemCounrtyBinding
 import com.example.kotlincountries.model.Country
 import com.example.kotlincountries.util.downloadFromUrl
 import com.example.kotlincountries.util.placeHolderProgressBar
@@ -16,14 +18,15 @@ class CountryAdapter (val countryList : ArrayList<Country>) : RecyclerView.Adapt
 
 
 
-    class CountryViewHolder(var view : View) : RecyclerView.ViewHolder(view) {
+    class CountryViewHolder(var view : ItemCounrtyBinding) : RecyclerView.ViewHolder(view.root) {
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
 
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_counrty,parent,false)
+        //val view = inflater.inflate(R.layout.item_counrty,parent,false)
+        val view = DataBindingUtil.inflate<ItemCounrtyBinding>(inflater,R.layout.item_counrty,parent,false)
         return CountryViewHolder(view)
 
 
@@ -31,7 +34,12 @@ class CountryAdapter (val countryList : ArrayList<Country>) : RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
 
-        //ekranda gösterilecek yer
+
+        holder.view.country=countryList[position]
+
+
+        /*
+                //ekranda gösterilecek yer
         holder.view.name.text=countryList[position].countryName
         holder.view.region.text=countryList[position].countryRegion
 
@@ -42,6 +50,9 @@ class CountryAdapter (val countryList : ArrayList<Country>) : RecyclerView.Adapt
         }
 
         holder.view.imageView.downloadFromUrl(countryList[position].imageUrl, placeHolderProgressBar(holder.view.context))
+         */
+
+
 
 
     }
