@@ -31,6 +31,7 @@ class CountryAdapter (val countryList : ArrayList<Country>) : RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
 
+        //ekranda gösterilecek yer
         holder.view.name.text=countryList[position].countryName
         holder.view.region.text=countryList[position].countryRegion
 

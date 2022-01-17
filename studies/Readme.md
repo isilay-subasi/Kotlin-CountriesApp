@@ -340,4 +340,25 @@ Buda statik şekilde bir değişken oluşturup bu sınıfın scopu dışında da
 
  + Sqlitedan mı çekicez apiden mi çekicez onunla ilgili bir fonksiyon oluşturacağız.
 
- 
+
+## KOTLİN : DATA BİNDİNG
+<hr>
+
+> UI elementlerini gözlemlenebilir verilerle bağlamak. Layouta koydugumuz bir görünümü değişken olarak kodda tanımlarken , aslında arka planda findViewById() kullanıyoruz.Kotlinde arka planda findViewById() çalıştırılıyor. Ama bu metot hafızayı çok şişiren bir metotdur. Hafızayı yoram bir metotdur.
+
+> Biz direk xml içerisinden text vereceğimiz yere modelimizden çektiğimiz veriyi yazabiliriz. Bu değişiklikler xml tarafından gözlemlenebilir. Direk kullanıcıya yansıtılabilir. 
+
+> item_country layoutunun içerisine data tagleri koyacağız.
+
+```
+    <data>
+        <variable
+            name="country"
+            type="com.example.kotlincountries.model.Country" />
+        
+        
+    </data>
+```
+
++ name ve type veriyoruz. Modelin ismini ve tipini veriyoruz. Verileri direk bağlıyabiliyoruz. 
++ android:text="@{country.countryName}"  datanın ismini yazınca, modelin içindeki verilere erişebiliyoruz.
