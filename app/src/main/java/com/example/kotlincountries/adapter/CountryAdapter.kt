@@ -14,7 +14,7 @@ import com.example.kotlincountries.util.placeHolderProgressBar
 import com.example.kotlincountries.view.FeedFragmentDirections
 import kotlinx.android.synthetic.main.item_counrty.view.*
 
-class CountryAdapter (val countryList : ArrayList<Country>) : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>(){
+class CountryAdapter (val countryList : ArrayList<Country>) : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>(),CountryClickListener{
 
 
 
@@ -36,6 +36,7 @@ class CountryAdapter (val countryList : ArrayList<Country>) : RecyclerView.Adapt
 
 
         holder.view.country=countryList[position]
+        holder.view.listener=this
 
 
         /*
@@ -68,6 +69,15 @@ class CountryAdapter (val countryList : ArrayList<Country>) : RecyclerView.Adapt
       notifyDataSetChanged()
 
 
+    }
+
+    override fun onCountryClicked(v: View) {
+
+        val uuid = v.countryUuidText.text.toString().toInt()
+
+        val action = FeedFragmentDirections.actionFeedFragmentToCountryFragment(uuid)
+
+        Navigation.findNavController(v).navigate(action)
     }
 
 
