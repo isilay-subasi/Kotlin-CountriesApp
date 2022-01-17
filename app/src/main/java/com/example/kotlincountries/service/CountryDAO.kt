@@ -16,6 +16,10 @@ interface CountryDAO {
     //vararg -> multiple country objects
     //List<Long> -> primary keys
 
+
+    //Database veri ekleneceğini söylüyoruz.
+    //Tekil objeyi farklı sayıda vereceğimiz gibi düşünelim ama tek tek veriyoruz.
+    //Primary ıd döndürecektir buda Long tipindedir.
     @Insert
     suspend fun insertAll(vararg countries : Country) : List<Long>
 
@@ -23,6 +27,8 @@ interface CountryDAO {
     @Query("SELECT * FROM country")
     suspend fun getAllCountries() : List<Country>
 
+
+    //iki nokta üst üste koyarak aldığımız countryIdyi verebiliriz.
     @Query("SELECT * FROM country WHERE uuid= :countryId")
     suspend fun getCountry(countryId : Int ) : Country
 

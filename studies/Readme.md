@@ -253,7 +253,7 @@ fun ImageView.downloadFromUrl(url : String? , progressDrawable: CircularProgress
 
 + Entity 
 
-+ DAO -> Verilere ulaşma objesidir. 
++ DAO -> Verilere ulaşma objesidir. Data Access Object
 
 Bu işlemleri yaparken arka planda yapacağız . Ve bunun içinde COROUTINE kullanacağız. 
 
@@ -261,7 +261,37 @@ Bu işlemleri yaparken arka planda yapacağız . Ve bunun içinde COROUTINE kull
 DAO oluşturduğumuzda bunun içindeki metotları coroutineler çağrırak yaptıgımız takdirde ana threadde değilde başka bir threadde yapıldıgını garanti altına alıyoruz. 
 Asenkron işlemler için kullanılıyor.Tanım olarak lightweight thread olarak söyleniyor main thread’i blocklamadan bir çok işlem yapabiliyoruz.Şöyle bir örnek var çok sayıda(1000) thread işlemi başlatırsanız uygulamanız crash olur ama aynı sayıda coroutine işlemi başlatırsanız herhangi bir sorun olmayacaktır.
 
-> Fonkisyonlar <b>suspend</b> keywordünğ alır. Coroutineler içerisinde çalıştırılabilen ve gerektiğinde durdurulup sonradan devam ettirilebilir fonksiyonlardır. 
+> Fonkisyonlar <b>suspend</b> keywordünü alır. Coroutineler içerisinde çalıştırılabilen ve gerektiğinde durdurulup sonradan devam ettirilebilir fonksiyonlardır. 
 
+### Veritabanı Oluşturmak 
 
+Entity - Model
+DAO - DAO interface 
+Database  
 
+```
+@Database(entities = arrayOf(Country::class),version = 1)
+abstract class CountryDatabase {
+
+    abstract fun countryDao() : CountryDAO
+}
+```
+
+> Bu veritabanımızdan birden fazla obje oluşturmasını istemiyoruz. Bu veritabanımızdan sadece bir tane obje oluşturmak istiyoruz. 
+Çünkü eğer farklı zamanlarda ya da aynı zamanlarda farklı threadlerden bizim veritabanımıza ulaşılmaya çalışılırsa bu çakışma oluşturacaktır. Bundan dolayı burda oluşturduğumuz databasemizi singleton mantığıyla oluşturacağız. 
+
+> <b>Singleton :</b> İçerisinden tek bir obje oluşturulabilen bir sınıftır. Eğer daha önce oluşturulmuş bir obje yoksa oluşturuyorduk. Eğer varsa oluşturmuyorduk o oluşturulan objeyi çekiyorduk. Ve appin herhangibir tarafında buna ulaşabilirdik. Ve her yerde ulaşabilmek için <b>companion object{}</b> kullanıyoruz. 
+Buda statik şekilde bir değişken oluşturup bu sınıfın scopu dışında da ulaşılmaya olanak sağlıyordu. 
+
+```
+    companion object{
+
+       @Volatile private var instance : CountryDatabase? = null
+    }
+```
+
++ @Volatile -> Herhangi bir değişkeni Volatile olarak tanımladığımız zaman farklı threadlere de görünür hale getirilir. 
+
++ Oluşturduğumuz instance var mı yok mu kontrol etmem lazım . Ona göre işlem yapacağım. Var ise o instance yok ise oluşturmam gerekiyor. 
+
++ Bu sınıfımızdan sadece tek bir obje oluşturulur. O objenin adı instance'dır.  
