@@ -366,3 +366,9 @@ Buda statik şekilde bir değişken oluşturup bu sınıfın scopu dışında da
 > xml içinde yaptığımız değişikliği adaptör içinde de değişiklikler yapılarak erişebiliriz. 
 
 + data binding yaptığımızı söylememiz gerekiyor. 
+
+### Kenid Listener Arayüzümüz
+
++ Data binding de onclick listenet yapacağız. Kendimiz bir arayüz yazmamız gerekiyor.
+
++ 

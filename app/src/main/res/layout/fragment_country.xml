@@ -2,6 +2,17 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="selectedCountry"
+            type="com.example.kotlincountries.model.Country" />
+
+    </data>
+
+
+
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:minHeight="200dp"
         android:paddingTop="10dp"
-        android:src="@mipmap/ic_launcher_round"
+        android:downloadUrl="@{selectedCountry.imageUrl}"
         android:scaleType="fitCenter">
 
     </ImageView>
@@ -29,7 +40,7 @@
         android:layout_marginTop="7dp"
         android:layout_marginEnd="7dp"
         android:layout_marginBottom="7dp"
-        android:text="Country Name"
+        android:text="@{selectedCountry.countryName}"
         android:textSize="20sp"
         android:textStyle="bold">
 
@@ -42,7 +53,7 @@
         android:layout_below="@id/countryName"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp"
-        android:text="Country Capital"
+        android:text="@{selectedCountry.countryCapital}"
         android:textSize="16sp"
          >
 
@@ -55,7 +66,7 @@
         android:layout_below="@id/countryCapital"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp"
-        android:text="Country Region"
+        android:text="@{selectedCountry.countryRegion}"
         android:textSize="16sp"
         >
 
@@ -67,7 +78,7 @@
         android:layout_below="@id/countryRegion"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp"
-        android:text="Country Currency"
+        android:text="@{selectedCountry.countryCurrency}"
         android:textSize="16sp"
         >
 
@@ -79,7 +90,7 @@
         android:layout_below="@id/countryCurrency"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp"
-        android:text="Country Language"
+        android:text="@{selectedCountry.countryLanguage}"
         android:textSize="16sp"
         >
 
